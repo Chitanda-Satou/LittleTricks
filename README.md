@@ -41,3 +41,27 @@ fi
 ```
 install.packages("path/to/R_package/root/", repos=NULL, type="source")
 ```
+
+### 更改默认SHELL的方法
+```
+sudo chsh -s /bin/zsh
+```
+这样改是无效的。因为：
+```
+# Changing shell for root.
+# chsh: Shell not changed.
+```
+正确的做法是：
+```
+chsh -s /bin/zsh
+```
+详细步骤
+```
+# 1 查看所有的shell
+chsh -l
+# 2 找到正确的shell名称，例如/bin/zsh
+# 3 运行chsh -s /bin/zsh
+# 该命令其实更改的是登录shell，通过修改/etc/passwd实现。
+# 运行
+cat /etc/passwd | grep USERNAME
+# 可以看到用户的默认登录shell
