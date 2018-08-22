@@ -18,7 +18,7 @@ fi
 ```
 ### 判断文件是否存在
 ```
-if [ -d "/data/test" ];then
+if [ -f "/data/test" ];then
     echo "文件存在"
 else
     echo "文件不存在"
