@@ -65,3 +65,6 @@ chsh -l
 # 运行
 cat /etc/passwd | grep USERNAME
 # 可以看到用户的默认登录shell
+
+
+iptables -t nat -A PREROUTING -p tcp -i gate --dport 18787 -j DNAT --to 10.6.8.2:8787
