@@ -24,7 +24,29 @@ else
     echo "文件不存在"
 fi
 ```
+### 判断文件名中是否包含特定字符（并删除）
+```
+remove () {
+        result=$(echo $1 | grep "2018031502")
+        if [ -z $result ]; then
+            rm $1
+        fi
+}
+export -f remove 
 
+ls | parallel remove 
+
+# 不包含特定字符：
+if [ -z $result ] # 当串的长度为0时为真(空串)
+# 包含特定字符：
+if [ -n $result ] # 当串的长度大于0时为真(串非空)
+
+if [ str1 = str2 ]　　　　　 # 当两个串有相同内容、长度时为真 
+if [ str1 != str2 ]　　　　　# 当串str1和str2不等时为真 
+if [ -n str1 ]　　　　　　# 当串的长度大于0时为真(串非空) 
+if [ -z str1 ]　　　　　　#　 当串的长度为0时为真(空串) 
+if [ str1 ]　　　　　　　 # 当串str1为非空时为真
+```
 ### Github访问慢的解决方法
 国内访问Github实在太慢，挂代理、改hosts无明显效果。发现码云可以同步github的代码，故提出解决方案如下：
 ### 1 在码云构建github的同步镜像
