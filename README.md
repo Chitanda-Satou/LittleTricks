@@ -88,5 +88,16 @@ chsh -l
 cat /etc/passwd | grep USERNAME
 # 可以看到用户的默认登录shell
 
+```
+### 设置端口转发
 
+### 1 临时设置
+```
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 18787 -j DNAT --to 10.6.8.2:8787
+```
+### 2永久设置
+```
+上面是这是临时设置的命令，重启就没了。
+需要永久设置的话，要在/etc/sysconfig/iptables里添加：
+-A PREROUTING -i gate -p tcp -m tcp --dport 18787 -j DNAT --to-destination 10.6.9.2:8787
+```
