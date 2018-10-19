@@ -47,6 +47,15 @@ if [ -n str1 ]　　　　　　# 当串的长度大于0时为真(串非空)
 if [ -z str1 ]　　　　　　#　 当串的长度为0时为真(空串) 
 if [ str1 ]　　　　　　　 # 当串str1为非空时为真
 ```
+### 判断文件名的后缀是不是某种类型
+"##" 贪婪匹配，删除最后一个点之前所有内容
+后面加一个x，是为了防止空字符报错
+```
+    if [[ "${input##*.}"x = "vcf"x ]]; then
+        bgzip $input
+        tabix -p "vcf" ${input}.gz
+    fi
+```
 ### Github访问慢的解决方法
 国内访问Github实在太慢，挂代理、改hosts无明显效果。发现码云可以同步github的代码，故提出解决方案如下：
 ### 1 在码云构建github的同步镜像
@@ -101,3 +110,21 @@ iptables -t nat -A PREROUTING -p tcp -i gate --dport 18787 -j DNAT --to 10.6.8.2
 需要永久设置的话，要在/etc/sysconfig/iptables里添加：
 -A PREROUTING -i gate -p tcp -m tcp --dport 18787 -j DNAT --to-destination 10.6.9.2:8787
 ```
+
+### WSL开启图形界面
+
+#### 1. 首先选择一个可用的X xerver
+Xming：https://sourceforge.net/projects/xming/
+
+VcXsrv：https://sourceforge.net/projects/vcxsrv/
+
+Xming很久未更新，所以选择了VcXsrv，
+```
+# 根据当前版本，下载exe安装包
+axel -n 12 -a https://nchc.dl.sourceforge.net/project/vcxsrv/vcxsrv/1.20.1.3/vcxsrv-64.1.20.1.3.installer.exe
+```
+在windows内安装VcXsrv，然后在ubuntu中安装
+```
+sudo apt install -y xfce4 xorg-dev
+```
+继续探索中
