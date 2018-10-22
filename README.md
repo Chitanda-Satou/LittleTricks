@@ -62,9 +62,6 @@ if [ str1 ]　　　　　　　 # 当串str1为非空时为真
 ```
 ![alt text](https://github.com/Chitanda-Satou/LittleTricks/blob/master/images/bamao.jpg)
 
-
-
-
 ### Github访问慢的解决方法
 国内访问Github实在太慢，挂代理、改hosts无明显效果。发现码云可以同步github的代码，故提出解决方案如下：
 ### 1 在码云构建github的同步镜像
