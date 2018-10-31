@@ -21,3 +21,17 @@ ls /var/log/sa
 # 使用sadf查看某天日志
 sadf  -d /var/log/sa/sa25
 ```
+批量执行的脚本
+```
+mkdir /thinker/storage/udata/bing/system_load/
+ssh gm66-7
+ssh gm66-6
+ssh gm66-5
+ssh gm66-4
+ssh gm66-3
+ssh gm66-2
+ssh gm66-1
+for i in /var/log/sa/sa*; do
+    sadf -d $i >> /thinker/storage/udata/bing/system_load/20181030.txt
+done
+
