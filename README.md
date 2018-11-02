@@ -121,6 +121,14 @@ iptables -t nat -A PREROUTING -p tcp -i gate --dport 18787 -j DNAT --to 10.6.8.2
 需要永久设置的话，要在/etc/sysconfig/iptables里添加：
 -A PREROUTING -i gate -p tcp -m tcp --dport 18787 -j DNAT --to-destination 10.6.9.2:8787
 ```
+### 终端看图
+
+安装好imagemagick后，直接运行
+```
+display xxx.png
+```
+需要开启X11转发
+
 
 ### WSL开启图形界面
 
