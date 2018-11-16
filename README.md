@@ -116,6 +116,7 @@ cat /etc/passwd | grep USERNAME
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 18787 -j DNAT --to 10.6.8.2:8787
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 19080 -j DNAT --to 10.6.9.2:9080
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 28888 -j DNAT --to 10.6.8.2:28888
+iptables -t nat -A PREROUTING -p tcp -i gate --dport 31229 -j DNAT --to 10.6.9.2:22
 ```
 ### 2永久设置
 ```
