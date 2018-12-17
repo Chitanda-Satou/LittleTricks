@@ -118,11 +118,17 @@ iptables -t nat -A PREROUTING -p tcp -i gate --dport 19080 -j DNAT --to 10.6.9.2
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 28888 -j DNAT --to 10.6.8.2:28888
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 31229 -j DNAT --to 10.6.9.2:22
 ```
-### 2永久设置
-```
+### 2 永久设置
 上面是这是临时设置的命令，重启就没了。
-需要永久设置的话，要在/etc/sysconfig/iptables里添加：
--A PREROUTING -i gate -p tcp -m tcp --dport 18787 -j DNAT --to-destination 10.6.8.2:8787
+不可以直接修改/etc/sysconfig/iptables。
+```
+service iptables save # 保存规则
+service iptables restart # 重启
+```
+### 3 删除不需要的/错误的规则
+```
+iptables -t nat -L --line-number # 查看规则 
+iptables -t nat -D PREROUTING X  # X就是要删掉的规则的序号值，例如3。删除完后save然后restart iptables即可。
 ```
 ### 终端看图
 
