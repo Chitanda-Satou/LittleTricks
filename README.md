@@ -112,11 +112,14 @@ cat /etc/passwd | grep USERNAME
 ### 设置端口转发
 
 ### 1 临时设置
+
+登录到做转发的机器，切换root用户
 ```
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 18787 -j DNAT --to 10.6.8.2:8787
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 19080 -j DNAT --to 10.6.9.2:9080
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 28888 -j DNAT --to 10.6.8.2:28888
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 31229 -j DNAT --to 10.6.9.2:22
+iptables -t nat -A PREROUTING -p tcp -i gate --dport 19081 -j DNAT --to 10.6.9.2:8081
 ```
 ### 2 永久设置
 上面是这是临时设置的命令，重启就没了。
