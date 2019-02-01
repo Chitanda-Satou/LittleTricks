@@ -120,6 +120,7 @@ iptables -t nat -A PREROUTING -p tcp -i gate --dport 19080 -j DNAT --to 10.6.9.2
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 28888 -j DNAT --to 10.6.8.2:28888
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 31229 -j DNAT --to 10.6.9.2:22
 iptables -t nat -A PREROUTING -p tcp -i gate --dport 19081 -j DNAT --to 10.6.9.2:8081
+iptables -t nat -A PREROUTING -p tcp -i gate --dport 11787 -j DNAT --to 10.6.11.2:8787 # 11号服务器的Rstudio
 ```
 ### 2 永久设置
 上面是这是临时设置的命令，重启就没了。
